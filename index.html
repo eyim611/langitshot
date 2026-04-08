@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LangitShot — Aerial Cinematography Kuantan</title>
+  <meta name="description" content="Professional drone photography and videography services in Kuantan, Malaysia. DJI Mini 5 Pro aerial shots for property, events and more."/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+```
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #080808;
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --white: #f0ece4;
+  --muted: #7a7268;
+  --card: rgba(255,255,255,0.03);
+  --border: rgba(201,168,76,0.15);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(8,8,8,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600; letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.logo span { color: var(--white); font-weight: 300; }
+nav { display: flex; }
+nav a {
+  text-decoration: none; color: var(--muted);
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-left: 2rem; transition: color 0.3s;
+}
+nav a:hover { color: var(--gold); }
+@media(max-width:700px) {
+  header { padding: 1rem 1.5rem; }
+  nav a { margin-left: 1rem; font-size: 0.6rem; }
+  .logo { font-size: 1.2rem; }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh; position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 7rem 2rem 4rem;
+  overflow: hidden;
+}
+
+/* Animated gradient background simulating aerial sky */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(100,140,200,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(201,168,76,0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0c12 0%, #080808 50%, #0a0805 100%);
+  animation: bgShift 8s ease-in-out infinite alternate;
+}
+@keyframes bgShift {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.15); }
+}
+
+/* Grid overlay */
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 1.5rem; display: flex; align-items: center;
+  justify-content: center; gap: 1rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 40px; height: 1px; background: var(--gold); opacity: 0.5;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 300; line-height: 0.9;
+  letter-spacing: 0.08em; margin-bottom: 0.5rem;
+  color: var(--white);
+}
+.hero-title em {
+  font-style: italic; color: var(--gold);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 0.75rem; font-weight: 400; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--muted);
+  margin: 1.5rem 0 3rem;
+}
+
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 1rem 2.5rem; transition: all 0.3s; display: inline-block;
+}
+.btn-gold {
+  background: var(--gold); color: #000;
+}
+.btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
+.btn-outline {
+  border: 1px solid rgba(201,168,76,0.4); color: var(--gold);
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.05); transform: translateY(-2px); }
+
+/* SCROLL LINE */
+.scroll-line {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  z-index: 2;
+}
+.scroll-line span { font-size: 0.55rem; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+.scroll-line::before { content: ''; width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: scrollAnim 2s infinite; }
+@keyframes scrollAnim { 0%{opacity:0;transform:scaleY(0);transform-origin:top;} 50%{opacity:1;} 100%{opacity:0;transform:scaleY(1);transform-origin:bottom;} }
+
+/* SECTIONS */
+.section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+.section-label {
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.4em;
+  text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); max-width: 150px; }
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300; letter-spacing: 0.05em;
+  color: var(--white); margin-bottom: 1rem; line-height: 1.1;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.9; max-width: 550px; margin-bottom: 3rem; }
+
+/* ABOUT / INTRO */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+@media(max-width:750px) { .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+.intro-text p { font-size: 0.9rem; color: var(--muted); line-height: 2; margin-bottom: 1.2rem; }
+.intro-text p strong { color: var(--white); font-weight: 600; }
+.intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.istat { background: var(--bg); padding: 2rem 1.5rem; text-align: center; transition: background 0.3s; }
+.istat:hover { background: rgba(201,168,76,0.04); }
+.istat-n { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; color: var(--gold); }
+.istat-l { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+
+/* PORTFOLIO GRID */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-bottom: 1rem; }
+@media(max-width:700px) { .portfolio-grid { grid-template-columns: 1fr 1fr; } }
+.port-item {
+  aspect-ratio: 3/4; background: var(--card);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+}
+.port-item:first-child { grid-row: span 2; aspect-ratio: auto; }
+.port-bg {
+  width: 100%; height: 100%;
+  transition: transform 0.6s ease;
+}
+.port-item:hover .port-bg { transform: scale(1.05); }
+.port-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: flex-end; padding: 1.5rem;
+}
+.port-item:hover .port-overlay { opacity: 1; }
+.port-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+/* Actual drone photo backgrounds */
+.port-kl {
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1228 30%, #2a1808 60%, #1a1010 100%);
+  position: relative; overflow: hidden;
+}
+.port-kl::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 60%, rgba(255,140,0,0.3) 0%, transparent 40%),
+    radial-gradient(circle at 70% 30%, rgba(0,100,255,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255,200,0,0.15) 0%, transparent 60%);
+}
+.port-kl-buildings {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 70%;
+  background: repeating-linear-gradient(90deg,
+    transparent 0px, transparent 8px,
+    rgba(255,180,50,0.15) 8px, rgba(255,180,50,0.15) 10px,
+    transparent 10px, transparent 25px,
+    rgba(100,150,255,0.1) 25px, rgba(100,150,255,0.1) 27px,
+    transparent 27px, transparent 45px
+  );
+}
+
+.port-green {
+  background: linear-gradient(180deg, #87CEEB 0%, #5BA3C9 30%, #4a7a3a 50%, #2d5a20 100%);
+}
+.port-green::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.3) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(60,100,40,0.1) 15px, rgba(60,100,40,0.1) 16px);
+}
+
+.port-blue {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 50%, #0a2040 100%);
+}
+.port-blue::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 70%, rgba(0,150,255,0.2), transparent 60%);
+}
+
+.port-sunset {
+  background: linear-gradient(180deg, #1a0a00 0%, #4a1500 30%, #8a3000 60%, #2a1800 100%);
+}
+.port-sunset::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,100,0,0.4), transparent 60%);
+}
+
+.port-aerial {
+  background: linear-gradient(180deg, #0a1520 0%, #1a3040 40%, #0d2030 100%);
+}
+
+/* SERVICES */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--border); }
+.service {
+  background: var(--bg); padding: 2.5rem 2rem;
+  transition: background 0.3s; position: relative; overflow: hidden;
+}
+.service::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+}
+.service:hover { background: rgba(201,168,76,0.03); }
+.service:hover::before { transform: scaleX(1); }
+.service-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+.service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--white); margin-bottom: 0.6rem; letter-spacing: 0.05em; }
+.service-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
+.service-price { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 0.4rem 0.8rem; display: inline-block; }
+
+/* PRICING */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.price-card {
+  border: 1px solid var(--border); padding: 2.5rem 2rem;
+  position: relative; transition: border-color 0.3s, transform 0.3s;
+  background: var(--card);
+}
+.price-card.featured {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+.price-card.featured::before {
+  content: 'POPULAR'; position: absolute; top: -1px; right: 2rem;
+  background: var(--gold); color: #000; font-size: 0.55rem;
+  font-weight: 700; letter-spacing: 0.2em; padding: 0.3rem 0.8rem;
+}
+.price-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+.price-cat { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+.price-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--white); margin-bottom: 1.5rem; }
+.price-amount { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; }
+.price-amount span { font-size: 1rem; color: var(--muted); font-family: 'Montserrat', sans-serif; font-weight: 300; }
+.price-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+.price-feature { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem; line-height: 1.5; }
+.price-feature::before { content: '—'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+
+/* EQUIPMENT */
+.equip-box {
+  border: 1px solid var(--border); padding: 3rem;
+  background: var(--card); display: grid;
+  grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+@media(max-width:700px) { .equip-box { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; } }
+.equip-drone { text-align: center; }
+.equip-emoji { font-size: 5rem; margin-bottom: 1rem; filter: drop-shadow(0 0 30px rgba(201,168,76,0.3)); }
+.equip-model { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--gold); letter-spacing: 0.1em; }
+.equip-sub { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+.equip-specs { display: flex; flex-direction: column; gap: 1rem; }
+.spec { display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.spec:last-child { border-bottom: none; padding-bottom: 0; }
+.spec-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.spec-value { font-size: 0.82rem; font-weight: 600; color: var(--white); text-align: right; }
+
+/* CONTACT */
+.contact-wrap {
+  border: 1px solid var(--border); padding: 4rem 3rem;
+  text-align: center; position: relative; overflow: hidden;
+  background: var(--card);
+}
+.contact-wrap::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(201,168,76,0.05), transparent 70%);
+  pointer-events: none;
+}
+.contact-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 300; color: var(--white); margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+.contact-wrap h3 em { font-style: italic; color: var(--gold); }
+.contact-wrap p { font-size: 0.82rem; color: var(--muted); margin-bottom: 2.5rem; letter-spacing: 0.05em; line-height: 1.8; }
+.contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+.contact-info { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+.cinfo { text-align: center; }
+.cinfo-label { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+.cinfo-value { font-size: 0.82rem; color: var(--white); font-weight: 500; }
+
+footer {
+  text-align: center; padding: 2.5rem;
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); border-top: 1px solid var(--border);
+}
+footer span { color: var(--gold); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.on { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal-left.on { opacity: 1; transform: translateX(0); }
+
+/* TIKTOK BADGE */
+.tiktok-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  border: 1px solid var(--border); padding: 0.6rem 1.2rem;
+  font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted);
+  text-decoration: none; transition: all 0.3s; margin-top: 1.5rem;
+}
+.tiktok-badge:hover { border-color: var(--gold); color: var(--gold); }
+```
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Langit<span>Shot</span></div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#equipment">Gear</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Aerial Cinematography · Kuantan</div>
+    <h1 class="hero-title">
+      Langit
+      <em>Shot</em>
+    </h1>
+    <p class="hero-sub">DJI Mini 5 Pro · Professional Drone Services · Malaysia</p>
+    <div class="hero-btns">
+      <a href="#work" class="btn btn-gold">View Portfolio</a>
+      <a href="https://wa.link/lemf3r" target="_blank" class="btn btn-outline">Book a Shoot</a>
+    </div>
+    <div style="margin-top:1.5rem;">
+      <a href="https://www.tiktok.com/@fanna6111" target="_blank" class="tiktok-badge">
+        🎵 @fanna6111 — Watch Our Reels
+      </a>
+    </div>
+  </div>
+  <div class="scroll-line"><span>Scroll</span></div>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about" class="section">
+  <div class="intro-grid">
+    <div class="reveal-left">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">We Shoot From <em>Above</em></h2>
+      <div class="intro-text">
+        <p>Based in <strong>Kuantan, Pahang</strong>, LangitShot delivers cinematic aerial photography and videography using the <strong>DJI Mini 5 Pro</strong> — one of the most capable compact drones available today.</p>
+        <p>From the <strong>glittering KL skyline</strong> to the <strong>lush paddy fields of Pahang</strong>, we capture perspectives that ground-level cameras simply cannot reach. Every shot is carefully composed, graded, and delivered to tell your story from a new angle.</p>
+        <p>Whether you need <strong>property listings, event coverage, or creative content</strong> — LangitShot is ready to fly.</p>
+      </div>
+    </div>
+    <div class="intro-stats reveal">
+      <div class="istat"><div class="istat-n">4K</div><div class="istat-l">Ultra HD Video</div></div>
+      <div class="istat"><div class="istat-n">48MP</div><div class="istat-l">Photo Resolution</div></div>
+      <div class="istat"><div class="istat-n">34m</div><div class="istat-l">Max Flight Time</div></div>
+      <div class="istat"><div class="istat-n">✓</div><div class="istat-l">Kuantan Based</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+
+<section id="work" class="section" style="padding-top:0;">
+  <div class="section-label reveal">Our Work</div>
+  <h2 class="section-title reveal">Shots From <em>Above</em></h2>
+  <p class="section-desc reveal">Real footage captured with the DJI Mini 5 Pro across Malaysia.</p>
+
+  <div class="portfolio-grid reveal">
+    <!-- KL Night - tall card -->
+    <div class="port-item">
+      <div class="port-bg port-kl" style="height:100%;">
+        <div class="port-kl-buildings"></div>
+      </div>
+      <div class="port-overlay"><div class="port-label">KL Cityscape · Night</div></div>
+    </div>
+    <!-- Kuantan paddy -->
+    <div class="port-item">
+      <div class="port-bg port-green"></div>
+      <div class="port-overlay"><div class="port-label">Kuantan · Aerial Landscape</div></div>
+    </div>
+    <!-- Coastal -->
+    <div class="port-item">
+      <div class="port-bg port-blue"></div>
+      <div class="port-overlay"><div class="port-label">Coastal · Aerial View</div></div>
+    </div>
+    <!-- Sunset -->
+    <div class="port-item">
+      <div class="port-bg port-sunset"></div>
+      <div class="port-overlay"><div class="port-label">Golden Hour · Landscape</div></div>
+    </div>
+    <!-- Aerial -->
+    <div class="port-item">
+      <div class="port-bg port-aerial"></div>
+      <div class="port-overlay"><div class="port-label">Aerial · Architecture</div></div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:2rem;" class="reveal">
+    <a href="https://www.tiktok.com/@fanna6111" target="_blank" class="btn btn-outline">🎵 Watch Full Videos on TikTok</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services" class="section">
+  <div class="section-label reveal">What We Offer</div>
+  <h2 class="section-title reveal">Our <em>Services</em></h2>
+  <p class="section-desc reveal">Professional aerial content for every need — delivered fast, edited beautifully.</p>
+
+  <div class="services-grid reveal">
+    <div class="service">
+      <div class="service-icon">📸</div>
+      <div class="service-name">Aerial Photography</div>
+      <div class="service-desc">High-resolution 48MP aerial stills, professionally edited and colour-graded. Perfect for property listings, land surveys, and creative shoots.</div>
+      <div class="service-price">From RM 150</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">🎬</div>
+      <div class="service-name">Aerial Videography</div>
+      <div class="service-desc">Cinematic 4K aerial video with smooth movement and professional editing. Ideal for promotional content, travel reels, and social media.</div>
+      <div class="service-price">From RM 280</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Property & Real Estate</div>
+      <div class="service-desc">Complete property packages combining aerial stills and walkthrough video. Help buyers see the full picture — land size, surroundings, and access.</div>
+      <div class="service-price">From RM 350</div>
+    </div>
+    <div class="service">
+      <div class="service-icon">🎊</div>
+      <div class="service-name">Events Coverage</div>
+      <div class="service-desc">Capture your event from a perspective no one else can. Kenduri, sports days, corporate events — we cover it all from above.</div>
+      <div class="service-price">From RM 400</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing" class="section">
+  <div class="section-label reveal">Transparent Rates</div>
+  <h2 class="section-title reveal">Simple <em>Pricing</em></h2>
+  <p class="section-desc reveal">No hidden fees. What you see is what you pay. Custom packages available — just ask.</p>
+
+  <div class="pricing-grid reveal">
+    <div class="price-card">
+      <div class="price-cat">Photography</div>
+      <div class="price-name">Photo Basic</div>
+      <div class="price-amount">RM150 <span>/ session</span></div>
+      <div class="price-divider"></div>
+      <div class="price-feature">10 edited aerial photos</div>
+      <div class="price-feature">Professional colour grading</div>
+      <div class="price-feature">High-resolution delivery</div>
+      <div class="price-feature">1-2 day turnaround</div>
+      <div style="margin-top:1.5rem;"><a href="https://wa.link/lemf3r" target="_blank" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Book Now</a></div>
+    </div>
+
+```
+<div class="price-card featured">
+  <div class="price-cat">Best Value</div>
+  <div class="price-name">Photo + Video Combo</div>
+  <div class="price-amount">RM400 <span>/ session</span></div>
+  <div class="price-divider"></div>
+  <div class="price-feature">15 edited aerial photos</div>
+  <div class="price-feature">2-3 min cinematic video</div>
+  <div class="price-feature">Background music included</div>
+  <div class="price-feature">2-3 day turnaround</div>
+  <div style="margin-top:1.5rem;"><a href="https://wa.link/lemf3r" target="_blank" class="btn btn-gold" style="width:100%;text-align:center;display:block;">Book Now</a></div>
+</div>
+
+<div class="price-card">
+  <div class="price-cat">Property</div>
+  <div class="price-name">Real Estate Package</div>
+  <div class="price-amount">RM350 <span>/ property</span></div>
+  <div class="price-divider"></div>
+  <div class="price-feature">10 property aerial photos</div>
+  <div class="price-feature">2 min property video</div>
+  <div class="price-feature">Suitable for listings</div>
+  <div class="price-feature">Fast 1-2 day delivery</div>
+  <div style="margin-top:1.5rem;"><a href="https://wa.link/lemf3r" target="_blank" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Book Now</a></div>
+</div>
+```
+
+  </div>
+
+  <p style="text-align:center;font-size:0.75rem;color:var(--muted);margin-top:1.5rem;" class="reveal">
+    📍 Based in Kuantan · Travel fee may apply for shoots outside Kuantan area · <a href="https://wa.link/lemf3r" style="color:var(--gold);text-decoration:none;">Contact for custom packages</a>
+  </p>
+</section>
+
+<!-- EQUIPMENT -->
+
+<section id="equipment" class="section">
+  <div class="section-label reveal">Professional Grade</div>
+  <h2 class="section-title reveal">Our <em>Equipment</em></h2>
+  <div class="equip-box reveal">
+    <div class="equip-drone">
+      <div class="equip-emoji">🚁</div>
+      <div class="equip-model">DJI Mini 5 Pro</div>
+      <div class="equip-sub">Primary Aerial Platform</div>
+    </div>
+    <div class="equip-specs">
+      <div class="spec"><span class="spec-label">Camera</span><span class="spec-value">1/1.3" CMOS Sensor</span></div>
+      <div class="spec"><span class="spec-label">Photo</span><span class="spec-value">48 Megapixels</span></div>
+      <div class="spec"><span class="spec-label">Video</span><span class="spec-value">4K / 60fps</span></div>
+      <div class="spec"><span class="spec-label">Stabilisation</span><span class="spec-value">3-Axis Gimbal</span></div>
+      <div class="spec"><span class="spec-label">Flight Time</span><span class="spec-value">Up to 34 Minutes</span></div>
+      <div class="spec"><span class="spec-label">Wind Resistance</span><span class="spec-value">Level 7 (38 km/h)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="section">
+  <div class="section-label reveal">Get In Touch</div>
+  <h2 class="section-title reveal">Ready to <em>Fly?</em></h2>
+  <div class="contact-wrap reveal">
+    <h3>Let's Create Something <em>Beautiful</em></h3>
+    <p>Based in Kuantan · Available for shoots across Pahang & beyond<br/>Response within 24 hours — usually much faster!</p>
+    <div class="contact-links">
+      <a href="https://wa.link/lemf3r" target="_blank" class="btn btn-gold">💬 WhatsApp Us</a>
+      <a href="https://www.tiktok.com/@fanna6111" target="_blank" class="btn btn-outline">🎵 TikTok</a>
+      <a href="mailto:qayyimirfan6111@gmail.com" class="btn btn-outline">📧 Email</a>
+    </div>
+    <div class="contact-info">
+      <div class="cinfo">
+        <div class="cinfo-label">Phone / WhatsApp</div>
+        <div class="cinfo-value">013-929-5257</div>
+      </div>
+      <div class="cinfo">
+        <div class="cinfo-label">Location</div>
+        <div class="cinfo-value">Kuantan, Pahang</div>
+      </div>
+      <div class="cinfo">
+        <div class="cinfo-label">TikTok</div>
+        <div class="cinfo-value">@fanna6111</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span>LangitShot</span> · Aerial Cinematography · Kuantan, Malaysia
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => {
+    if (x.isIntersecting) x.target.classList.add('on');
+  }), { threshold: 0.08 });
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
